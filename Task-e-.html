@@ -15,11 +15,13 @@
         request.onload=function(){
         var data = JSON.parse(request.response)
         console.log(data);
-        for(let i=0 ; i<data.length;i++)
-        var Result= data.filter((index)=>index[i].currencies[0]=="USD")
-        console.log(Result);
-        }
+        const usdCurrencies = data.filter(country => {
+        const currencies = country.currencies;
+        return currencies && currencies.USD;
         
+      });
+        console.log(usdCurrencies)
+    }
         
     </script>
 
